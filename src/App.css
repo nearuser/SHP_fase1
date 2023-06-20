@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  color: white;
+  font-family: Lato, sans-serif;
+  background-color: #457a7c;
+  margin-top: 10px;
+}
+
+h1 {
+  color: #1b1b32;
+  font-size: 25px;
+  font-family: Roboto, sans-serif;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: #457a7c;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: fixed; /* Agrega esta línea */
+  top: 0; /* Opcional: Puedes ajustar la posición superior según tus necesidades */
+}
+
+
+.header h1 {
+  color: white;
+  font-size: 24px;
+}
+
+
+
+/*CSS DE LOGO*/
+.logo-contenedor {
+  width: 350px;
+  height: 200px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.logo {
+  width: 50%;
+  height: 50%;
+}
+
+.componentes-principales {
+  margin-top: 100px; /* Ajusta el valor según la altura de tu header */
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b1b32;
+}
+.componentes-principales h2 {
+    padding-top: 30px;
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-bottom: 20px; /* Agrega un espacio de separación inferior */
+}
