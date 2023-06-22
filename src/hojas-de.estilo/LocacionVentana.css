@@ -78,6 +78,7 @@ button {
 button:hover {
   background-color: #555; /* Cambia el color de fondo al pasar el mouse por encima según tu preferencia */
 }
+
 .nombre-locacion {
   position: absolute;
   bottom: 260px;
@@ -93,5 +94,26 @@ button:hover {
 iframe {
   width: 100%;
   pointer-events: none;
+}
+
+/**COSAS QUE OCURREN CUANDO SE DISPARA EL EVENTO seleccionarLocacion */
+
+.seleccionar-locacion {
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.seleccionar-locacion:hover {
+  background-color: #0d47a1;
+}
+
+.seleccionar-locacion.seleccionada {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 

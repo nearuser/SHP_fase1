@@ -15,7 +15,7 @@
   }
   
   .locacion-card {
-    background-color: #f1f1f1;
+    background-color: #681616;
     border: 1px solid #ccc;
     padding: 20px;
     height: 250px;
@@ -27,13 +27,14 @@
   }
   
   .locacion-card:hover {
-    transform: scale(1.1);
+    /*transform: scale(1.1);*/
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .locacion-nombre {
     font-size: 18px;
     font-weight: bold;
+    margin-top: 200px;
     margin-bottom: 10px;
   }
   

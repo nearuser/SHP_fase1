@@ -9,8 +9,12 @@
 import React from 'react';
 import '../hojas-de.estilo/LocacionVentana.css';
 
-function LocacionVentana({ locacion, cerrarVentana }) {
-  const { nombre, descripcion, galeria, localizacion } = locacion;
+function VentanaLocacion({ locacion, cerrarVentana, seleccionarLocacion }) {
+  const { id, nombre, descripcion, galeria, localizacion, locacionSeleccionada } = locacion;
+
+  const handleClick = () => {
+    seleccionarLocacion(id);
+  };
 
   return (
     <div className='locacion-ventana'>
@@ -20,7 +24,11 @@ function LocacionVentana({ locacion, cerrarVentana }) {
       <div className='contenido-ventana'>
         <div className='banner-locacion'>
           <img src={galeria[0]} alt='Imagen principal' />
-          <h2 className='nombre-locacion'>{nombre}</h2> {/* Nuevo */}
+          <h2 className='nombre-locacion'>{nombre}</h2>
+          {/** A continuacion se agrega el boton cotizaro o seleccionar locacion y su logica para mantener y no duplicar una locacion seleccionada mas de una vez */}
+          <button className={`seleccionar-locacion ${locacionSeleccionada ? 'seleccionada' : ''}`} disabled={locacionSeleccionada} onClick={handleClick}>
+            {locacionSeleccionada ? 'Seleccionada' : 'Seleccionar'}
+          </button>
         </div>
         <div className='descripcion-locacion'>
           <div className='descripcion-texto'>
@@ -34,11 +42,12 @@ function LocacionVentana({ locacion, cerrarVentana }) {
         </div>
         <p>Coordenadas: {localizacion}</p>
         <div className='contenedor-mapa'>
-        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1rQqHfWiDfBT1OmIfpD6w5GPyiznmj50&ehbc=2E312F" title='mapa' width="100%" height="400"></iframe>
+          <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1rQqHfWiDfBT1OmIfpD6w5GPyiznmj50&ehbc=2E312F" title='mapa' width="100%" height="400"></iframe>
         </div>
       </div>
     </div>
   );
 }
 
-export default LocacionVentana;
+export default VentanaLocacion;
+

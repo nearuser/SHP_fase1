@@ -117,7 +117,7 @@ function CatalogoLocaciones() {
       </div>
       {locacionSeleccionada && (
         <Modal isOpen={locacionSeleccionada !== null} onRequestClose={cerrarVentana}>
-        <LocacionVentana locacion={locacionSeleccionada} cerrarVentana={cerrarVentana} />
+        <LocacionVentana locacion={locacionSeleccionada} cerrarVentana={cerrarVentana} seleccionarLocacion={seleccionarLocacion} agregarALocacionesGuardadas={agregarALocacionesGuardadas} />
       </Modal>
       )}
 
