@@ -3,12 +3,23 @@ import Modal from 'react-modal';
 import { v4 as uuidv4 } from 'uuid';
 import Locacion from "./Locacion";
 import LocacionVentana from './LocacionVentana';
+import Calendario from './Calendario';
 import "../hojas-de.estilo/CatalogoLocaciones.css";
 
 Modal.setAppElement('#root');
 
 
 function CatalogoLocaciones() {
+  // ESTADOS PATA CONTROLAR LA APERTURA Y CIERRE DE LA VENTANA EMERGENTE DE CALENDARIO , ASI COMO PARA ALMACENAR LOS EVENTOS CREADOS 
+  const [mostrarCalendario, setMostrarCalendario] = useState(false);
+  const [eventos, setEventos] = useState([]);
+
+  const agregarEvento = (evento) => {
+    setEventos([...eventos, evento]);
+    //setMostrarCalendario(false); // Cerrar la ventana emergente después de agregar el evento
+  };
+  
+
   const [locaciones, setLocaciones] = useState([
     {
       id: uuidv4(),
@@ -112,6 +123,8 @@ function CatalogoLocaciones() {
           <div key={locacion.id}>
             <h3 className="locacion-nombre">{locacion.nombre}</h3>
             <p className="locacion-descripcion">{locacion.descripcion}</p>
+            {/** SE AGREGA AQUI UN BOTON QUE PERMITA SETEAR UNA FECHA MEDIANTE EL COMPONENTE CALENDARIO.JS */}
+            <button className="calendario" onClick={() => setMostrarCalendario(true)}>Calendario</button>
           </div>
         ))}
       </div>
@@ -121,8 +134,18 @@ function CatalogoLocaciones() {
       </Modal>
       )}
 
+      {/** SE AGREGA UNA CONDICION PARA MOSTRAR LA VENTANA EMERGENTE DEL CALENDARIO CUANDO "mostrarCalendario" sea "true" */}
+      {mostrarCalendario && (
+        <Modal isOpen={mostrarCalendario} onRequestClose={() => setMostrarCalendario(false)}>
+          <Calendario eventos={eventos} agregarEvento={agregarEvento}/>
+          <Modal isOpen={locacionSeleccionada !== null} onRequestClose={cerrarVentana}></Modal>
+        </Modal>
+)}
+
     </div>
   );
 }
+
+
 
 export default CatalogoLocaciones;
