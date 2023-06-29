@@ -1,20 +1,16 @@
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import logo from './imagenes/logos/logo-rectagular.png'
 import CatalogoLocaciones from './componentes/CatalogoLocaciones';
-import React, { useState } from 'react';
 import Menu from './componentes/Menu';
+import LocacionGuardada from './componentes/LocacionGuardada';
+import { LocacionesProvider } from './componentes/LocacionContext';
 
 
 function App() {
 
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
   return (
-    <div className="App">
+    <Router>
       <header className="header">
         <div className='logo-contenedor'>
           <img
@@ -23,16 +19,21 @@ function App() {
             alt='logo del proyecto' 
           />
         </div>
-        <Menu isOpen={menuOpen} toggleMenu={toggleMenu} />
+        <Menu />
       </header>
-      
       <div className="aplicacion-tareas">
         <div className='componentes-principales'>
-          <CatalogoLocaciones />
+          <Routes>
+            <Route path="/" element={''} />
+            <Route path="/catalogo" element={<LocacionesProvider> <CatalogoLocaciones /> </LocacionesProvider>} />
+            <Route path="/seleccion" element={<LocacionesProvider> <LocacionGuardada /> </LocacionesProvider> } />
+            {/* Agrega aquí más rutas para las secciones de tu página web */}
+          </Routes>
         </div>
       </div>
-    </div>
+    </Router>
   );
 }
+
 
 export default App;

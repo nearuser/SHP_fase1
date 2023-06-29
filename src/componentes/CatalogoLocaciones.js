@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Modal from 'react-modal';
 import { v4 as uuidv4 } from 'uuid';
 import Locacion from "./Locacion";
 import LocacionVentana from './LocacionVentana';
 import Calendario from './Calendario';
 import "../hojas-de.estilo/CatalogoLocaciones.css";
+import { LocacionesContext } from './LocacionContext';
 
 Modal.setAppElement('#root');
 
@@ -75,8 +76,9 @@ function CatalogoLocaciones() {
     },
   ]);
 
-  const [locacionesGuardadas, setLocacionesGuardadas] = useState([]);
+  //const [locacionesGuardadas, setLocacionesGuardadas] = useState([]);
   const [locacionSeleccionada, setLocacionSeleccionada] = useState(null); // Nuevo estado
+  const [locacionesGuardadas, setLocacionesGuardadas] = useContext(LocacionesContext);
 
   const seleccionarLocacion = (id) => {
     const locacionesActualizadas = locaciones.map((locacion) => {
@@ -118,6 +120,7 @@ function CatalogoLocaciones() {
         ))}
       </div>
       <h2>Locaciones Guardadas</h2>
+      {console.log(locacionesGuardadas)}
       <div className="locaciones-guardadas">
         {locacionesGuardadas.map((locacion) => (
           <div key={locacion.id}>
